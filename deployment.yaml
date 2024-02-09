@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elder-grater
+  namespace: default
+  labels:
+    app: elder-grater  
+spec:
+  replicas: 1            
+  selector:
+    matchLabels:
+      app: elder-grater  
+  template:
+    metadata:
+      labels:
+        app: elder-grater
+    spec:
+      containers:
+      - name: elder-kettle 
+        image: replace_me.dkr.ecr.us-west-2.amazonaws.com/elder-kettle:latest
+        imagePullPolicy: Always

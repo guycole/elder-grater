@@ -1,0 +1,13 @@
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: elder-grater
+  namespace: default
+  labels:
+    app: elder-grater  
+spec:
+  serviceAccountName: default
+  containers:
+  - name: elder-kettle 
+    image: replace_me.dkr.ecr.us-west-2.amazonaws.com/elder-kettle:latest
+    imagePullPolicy: Always
