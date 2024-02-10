@@ -11,6 +11,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
+	"github.com/aws/aws-sdk-go/service/sqs"
 	"github.com/aws/aws-sdk-go/service/sts"
 )
 
@@ -93,13 +94,25 @@ func main() {
 	// s3
 	s3Client := s3.New(sess)
 	buckets, err := s3Client.ListBuckets(&s3.ListBucketsInput{})
-	if err != nil {
-		panic(err)
+	if err == nil {
+		jsonBuckets, _ := json.MarshalIndent(*buckets, "", "  ")
+		log.Printf("%+v", string(jsonBuckets))
+	} else {
+		log.Println(err)
 	}
 
-	jsonBuckets, _ := json.MarshalIndent(*buckets, "", "  ")
-	log.Printf("%+v", string(jsonBuckets))
+	// SQS
+	sqsClient := sqs.New(sess)
+	queues, err := sqsClient.ListQueues(nil)
+	if err == nil {
+		for _, queue := range queues.QueueUrls {
+			log.Println(*queue)
+		}
+	} else {
+		log.Println(err)
+	}
 
+	// sleep
 	for {
 		log.Println("sleeping...")
 		time.Sleep(33 * time.Second)
