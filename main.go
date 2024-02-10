@@ -86,9 +86,11 @@ func main() {
 		panic(err)
 	}
 
+	// identity
 	jsonIdentity, _ := json.MarshalIndent(*identity, "", "  ")
 	log.Printf("%s", string(jsonIdentity))
 
+	// s3
 	s3Client := s3.New(sess)
 	buckets, err := s3Client.ListBuckets(&s3.ListBucketsInput{})
 	if err != nil {
