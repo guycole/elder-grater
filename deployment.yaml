@@ -16,6 +16,6 @@ spec:
         app: elder-grater
     spec:
       containers:
-      - name: elder-kettle 
+      - name: elder-grater 
         image: replace-me.dkr.ecr.us-west-2.amazonaws.com/elder-grater:latest
         imagePullPolicy: Always

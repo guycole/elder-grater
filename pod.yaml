@@ -6,7 +6,7 @@ metadata:
   labels:
     app: elder-grater  
 spec:
-  serviceAccountName: default
+  serviceAccountName: elder-grater
   containers:
   - name: elder-grater 
     image: replace-me.dkr.ecr.us-west-2.amazonaws.com/elder-grater:latest

@@ -81,13 +81,13 @@ func main() {
 		log.Println(sess)
 	}
 
+	// identity
 	stsClient := sts.New(sess)
 	identity, err := stsClient.GetCallerIdentity(&sts.GetCallerIdentityInput{})
 	if err != nil {
 		panic(err)
 	}
 
-	// identity
 	jsonIdentity, _ := json.MarshalIndent(*identity, "", "  ")
 	log.Printf("%s", string(jsonIdentity))
 
