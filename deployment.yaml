@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: elder-grater
-  namespace: default
+  namespace: guytest
   labels:
     app: elder-grater  
 spec:
@@ -15,6 +15,7 @@ spec:
       labels:
         app: elder-grater
     spec:
+      serviceAccountName: elder-grater
       containers:
       - name: elder-grater 
         image: replace-me.dkr.ecr.us-west-2.amazonaws.com/elder-grater:latest

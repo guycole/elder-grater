@@ -16,14 +16,15 @@ EKS IRSA demonstration to access S3 and SQS
     1. Select "Next"
     1. Add role name "elder-grater"
     1. Select "Create role"
+    1. [example](https://github.com/guycole/elder-grater/blob/main/iam_role.json)
 1. Deploy the k8s ServiceAccount
     1. Edit [service_account.yaml](https://github.com/guycole/elder-grater/blob/main/service_account.yaml)
         1. Change "replace-me" with your AWS account number
     1. Deploy the SA ("kubectl apply -f service_account.yaml")
 1. Deploy the pod
-    1. Edit [pod.yaml](https://github.com/guycole/elder-grater/blob/main/service_account.yaml) 
+    1. Edit [deployment.yaml](https://github.com/guycole/elder-grater/blob/main/deployment.yaml)
         1. Update image spec to reflect true location
-    1. Deploy the pod ("kubectl apply -f pod.yaml")
+    1. Deploy the pod ("kubectl apply -f deployment.yaml")
 1. Review the log
     1. "kubectl logs elder-grater -f"
     1. Success means you see happy AWS login and SQS/S3 information

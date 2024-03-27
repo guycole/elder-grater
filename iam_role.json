@@ -1,0 +1,29 @@
+{
+    "Role": {
+        "Path": "/",
+        "RoleName": "irsa-elder-grater",
+        "RoleId": "AROAYKCJVRTOOVOQWQW43",
+        "Arn": "arn:aws:iam::123456789012:role/irsa-elder-grater",
+        "CreateDate": "2024-03-27T21:39:19+00:00",
+        "AssumeRolePolicyDocument": {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Effect": "Allow",
+                    "Principal": {
+                        "Federated": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-west-2.amazonaws.com/id/F5CFD1XXX2FB0F9D0DFBBC6AB542580D"
+                    },
+                    "Action": "sts:AssumeRoleWithWebIdentity",
+                    "Condition": {
+                        "StringEquals": {
+                            "oidc.eks.us-west-2.amazonaws.com/id/F5CFD1XXX2FB0F9D0DFBBC6AB542580D:aud": "sts.amazonaws.com"
+                        }
+                    }
+                }
+            ]
+        },
+        "Description": "test",
+        "MaxSessionDuration": 3600,
+        "RoleLastUsed": {}
+    }
+}
